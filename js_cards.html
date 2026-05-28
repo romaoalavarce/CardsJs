@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardsJs</title>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+  }
+  h1{
+    text-align:center;
+    font: bold; color: blue;
+    -webkit-text-stroke: 2px black;
+    font-size: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .card h3 {
+     margin: 0 0 10px; font-size: 15px; color: #1a56db; 
+    }
+
+    button {
+    background: #1a56db;
+    color: white;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-top: 6px;
+    margin-right: 6px;
+  }
+  </style>
+
+  
+</head>
+<body>
+
+    <h1>Cards</h1>
+</h1>
+
+  <div class="card">
+    <h3>1. Par ou Ímpar</h3>
+    <input type="number" id="r1" placeholder="Número">
+    <button onclick="
+      var n = Number(document.getElementById('r1').value);
+      alert(n % 2 === 0 ? n + ' é PAR' : n + ' é ÍMPAR');
+    ">Verificar</button>
+  </div>
+
+  <div class="card">
+    <h3>2. Tabuada</h3>
+    <input type="number" id="r2" placeholder="Número">
+    <button onclick="
+      var n = Number(document.getElementById('r2').value);
+      var res = '';
+      for (var i = 1; i <= 10; i++) res += n + ' x ' + i + ' = ' + (n*i) + '\n';
+      alert(res);
+    ">Gerar</button>
+  </div>
+
+  <div class="card">
+    <h3>3. Faixa Etária</h3>
+    <input type="number" id="r3" placeholder="Idade">
+    <button onclick="
+      var i = Number(document.getElementById('r3').value);
+      var r = i < 13 ? 'Criança' : i < 18 ? 'Adolescente' : i < 60 ? 'Adulto' : 'Idoso';
+      alert(i + ' anos: ' + r);
+    ">Verificar</button>
+  </div>
+
+  <div class="card">
+    <h3>4. Aprovado / Reprovado</h3>
+    <input type="number" id="r4" placeholder="Nota (0-10)">
+    <button onclick="
+      var n = Number(document.getElementById('r4').value);
+      var r = n >= 7 ? 'Aprovado ✅' : n >= 5 ? 'Recuperação ⚠️' : 'Reprovado ❌';
+      alert('Nota ' + n + ': ' + r);
+    ">Verificar</button>
+  </div>
+
+  <div class="card">
+    <h3>5. Maior Número</h3>
+    <input type="number" id="r5a" placeholder="Número A">
+    <input type="number" id="r5b" placeholder="Número B">
+    <button onclick="
+      var a = Number(document.getElementById('r5a').value);
+      var b = Number(document.getElementById('r5b').value);
+      alert(a > b ? a + ' é maior' : b > a ? b + ' é maior' : 'São iguais');
+    ">Comparar</button>
+  </div>
+
+  <div class="card">
+    <h3>6. Pares de 1 a 50</h3>
+    <button onclick="
+      var pares = [];
+      for (var i = 2; i <= 50; i += 2) pares.push(i);
+      alert(pares.join(', '));
+    ">Mostrar</button>
+  </div>
+
+  <div class="card">
+    <h3>7. Média de Números</h3>
+    <input type="text" id="r7" placeholder="Ex: 7, 8, 9, 6, 10">
+    <button onclick="
+      var nums = document.getElementById('r7').value.split(',').map(Number);
+      var soma = 0;
+      for (var i = 0; i < nums.length; i++) soma += nums[i];
+      alert('Média: ' + (soma / nums.length).toFixed(2));
+    ">Calcular</button>
+  </div>
+
+  <div class="card">
+    <h3>8. Contar Vogais</h3>
+    <input type="text" id="r8" placeholder="Palavra">
+    <button onclick="
+      var p = document.getElementById('r8').value.toLowerCase();
+      var count = 0;
+      for (var i = 0; i < p.length; i++)
+        if ('aeiouáéíóú'.includes(p[i])) count++;
+      alert('Vogais: ' + count);
+    ">Contar</button>
+  </div>
+
+  <div class="card">
+    <h3>9. Números Primos (1-100)</h3>
+    <button onclick="
+      var primos = [];
+      for (var n = 2; n <= 100; n++) {
+        var primo = true;
+        for (var i = 2; i < n; i++) if (n % i === 0) { primo = false; break; }
+        if (primo) primos.push(n);
+      }
+      alert(primos.join(', '));
+    ">Mostrar</button>
+  </div>
+
+  <div class="card">
+    <h3>10. Inverter Palavra</h3>
+    <input type="text" id="r10" placeholder="Palavra">
+    <button onclick="
+      var p = document.getElementById('r10').value;
+      alert(p.split('').reverse().join(''));
+    ">Inverter</button>
+  </div>
+
+  <div class="card">
+    <h3>11. Real → Dólar</h3>
+    <input type="number" id="r11" placeholder="Valor em R$">
+    <button onclick="
+      var v = Number(document.getElementById('r11').value);
+      var cotacao = 5.10;
+      alert('R$ ' + v.toFixed(2) + ' = $ ' + (v / cotacao).toFixed(2));
+    ">Converter</button>
+  </div>
+
+  <div class="card">
+    <h3>12. Fibonacci</h3>
+    <input type="number" id="r12" placeholder="Até qual número?">
+    <button onclick="
+      var limite = Number(document.getElementById('r12').value);
+      var seq = [0, 1];
+      while (true) {
+        var prox = seq[seq.length-1] + seq[seq.length-2];
+        if (prox > limite) break;
+        seq.push(prox);
+      }
+      alert(seq.join(', '));
+    ">Gerar</button>
+  </div>
+
+</body>
+</html>
